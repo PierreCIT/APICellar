@@ -2,7 +2,9 @@ export interface Bottle {
   name: string;
   price: number;
 }
-
+export interface DTO { //Data Transfer Object
+  name:string;
+}
 export interface TotalPrice {
   toEuro: () => number;
   toDollar: () => number;

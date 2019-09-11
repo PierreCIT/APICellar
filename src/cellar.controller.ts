@@ -2,7 +2,7 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CellarService } from './cellar.service';
 import { Cellar } from './Cellar';
 
-export interface DTO { //Data Transfer Object
+export interface cellarDTO { //Data Transfer Object
   name:string;
 }
 
@@ -17,7 +17,7 @@ export class CellarController {
   }
 
   @Post()
-  createCellar(@Body() body: DTO): void {
+  createCellar(@Body() body: cellarDTO): void {
     this.cellarService.createCellar(body.name);
   }
 }
