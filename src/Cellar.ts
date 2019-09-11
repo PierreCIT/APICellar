@@ -10,6 +10,13 @@ export interface TotalPrice {
 
 export class Cellar {
   bottles: Bottle[] = [];
+  name: string = '';
+  id: number;
+
+  constructor(name: string, id:number) {
+    this.name = name;
+    this.id=id;
+  }
 
   addBottle(name: string, price: number): void {
     const t: Bottle = { name, price };
@@ -46,7 +53,7 @@ export class Cellar {
 
   private computeTotalPrice(): number {
     let sum: number = 0;
-      // tslint:disable-next-line:prefer-for-of
+    // tslint:disable-next-line:prefer-for-of
     for (let i: number = 0; i < this.bottles.length; i++) {
       sum += this.bottles[i].price;
     }

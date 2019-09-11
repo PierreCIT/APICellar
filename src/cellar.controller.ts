@@ -1,12 +1,23 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CellarService } from './cellar.service';
+import { Cellar } from './Cellar';
 
-@Controller('cellar')
+export interface DTO { //Data Transfer Object
+  name:string;
+}
+
+@Controller('cellars')
 export class CellarController {
-  constructor(private readonly appService: CellarService) {}
+  constructor(private readonly cellarService: CellarService) {
+  }
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getCellars(): Cellar[] {
+    return this.cellarService.getCellars();
+  }
+
+  @Post()
+  createCellar(@Body() body: DTO): void {
+    this.cellarService.createCellar(body.name);
   }
 }
