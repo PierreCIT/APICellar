@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CellarService } from './cellar.service';
-import { Cellar } from './Cellar';
+import { Cellar, Bottle } from './Cellar';
 
-export interface cellarDTO { //Data Transfer Object
+interface cellarDTO { //Data Transfer Object
   name:string;
 }
 
@@ -17,7 +17,24 @@ export class CellarController {
   }
 
   @Post()
-  createCellar(@Body() body: cellarDTO): void {
-    this.cellarService.createCellar(body.name);
+  createCellar(@Body() cellarDto: cellarDTO) {
+    return this.cellarService.createCellar(cellarDto);
   }
+
+  @Get(':id')
+  getCellarId(@Param('id') id: string): Cellar {
+    return this.cellarService.getCellarId(id);
+  }
+
+  @Post(':id/bottles')
+  addBottle(@Body() bottleDto:Bottle, @Param('id')id:string) {
+    return this.cellarService.addBottle(bottleDto, id);
+  }
+
+  @Get(':id/bottles')
+  getBottlesCellar(@Param('id')id:string):Bottle[]{
+    return this.getCellarId(id).bottles;
+  }
+
+
 }

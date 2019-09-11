@@ -2,9 +2,6 @@ export interface Bottle {
   name: string;
   price: number;
 }
-export interface DTO { //Data Transfer Object
-  name:string;
-}
 export interface TotalPrice {
   toEuro: () => number;
   toDollar: () => number;
@@ -13,9 +10,9 @@ export interface TotalPrice {
 export class Cellar {
   bottles: Bottle[] = [];
   name: string = '';
-  id: number;
+  id: string;
 
-  constructor(name: string, id:number) {
+  constructor(name: string, id:string) {
     this.name = name;
     this.id=id;
   }
