@@ -26,7 +26,16 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+[Nest](https://github.com/nestjs/nest) framework TypeScript project made at **school** as an introduction to web development and API building.</br>
+This API is very simple and even though it is working properly it is not recommended to run on an open server, for security concerns.
+
+The API can handle a 2 types of 'object' :
+  - Cellar
+  - Bottles
+
+The cellars consist only of a Name and an ID and the Bottles of a name and a price.
+
+It is possible to add cellars and bottles to it and also to retrieve all information about a specific cellar.
 
 ## Installation
 
